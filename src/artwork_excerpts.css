@@ -35,8 +35,8 @@ h1, .artwork-tile h2 { font-family: Georgia, 'Times New Roman', serif; font-weig
 .artwork-pagination .btn { min-height: 34px; border-radius: 17px; padding: 5px 13px; font-size: 11px; }
 .artwork-empty { padding: 24px 12px; font-size: 14px; }
 .artwork-navigation { flex: 0 0 72px; padding: 0; background: #3c3c3c; }
-.artwork-navigation .nav { width: 100%; display: flex; justify-content: space-around; }
-.artwork-navigation .nav-link { display: flex; align-items: center; flex-direction: column; gap: 3px; padding: 6px 3px; color: #ffffffc7; font-size: 11px; font-weight: 700; }
+.artwork-navigation .navbar-nav { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.artwork-navigation .nav-link { width: 100%; min-width: 0; min-height: 72px; justify-content: center; text-align: center; display: flex; align-items: center; flex-direction: column; gap: 3px; padding: 6px 3px; color: #ffffffc7; font-size: 11px; font-weight: 700; }
 .artwork-navigation .nav-link span { font-size: 22px; line-height: 1.1; }
 .artwork-navigation .nav-link.active { color: #ed2324; }
 .artwork-navigation .nav-link.disabled { color: #ffffff61; cursor: not-allowed; }
