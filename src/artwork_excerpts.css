@@ -1,0 +1,60 @@
+/* Основа ЛР1/ЛР2: https://www.culture.ru/theaters.
+   #3c3c3c, #ffffff, #ed2324; серая панель, обложки с затемнением,
+   небольшое скругление, hover и красное подчёркивание бренда. */
+:root { font-family: Arial, sans-serif; color: #3c3c3c; background: white; }
+* { box-sizing: border-box; }
+body { margin: 0; background: white; color: #3c3c3c; }
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+.artwork-shell { position: relative; width: min(100%, 390px); height: 100dvh; margin: auto; display: flex; flex-direction: column; background: white; box-shadow: 0 0 28px #3c3c3c38; }
+.artwork-brand { flex: 0 0 66px; display: flex; align-items: center; justify-content: space-between; padding: 24px 16px 12px; }
+.artwork-brand a { padding-bottom: 4px; border-bottom: 4px solid #ed2324; color: #3c3c3c; font-size: 15px; font-weight: 800; letter-spacing: .08em; }
+.artwork-brand > span { display: none; }
+.artwork-content { flex: 1; min-height: 0; overflow: auto; }
+.artwork-gallery { padding: 0 16px 12px; }
+.artwork-gallery header { padding: 20px 0; }
+.artwork-eyebrow { margin: 0 0 5px; font-size: 12px; letter-spacing: .1em; color: #ed2324; font-weight: 800; }
+h1, .artwork-tile h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }
+.artwork-gallery h1 { font-size: 34px; line-height: 1; margin: 7px 0 8px; }
+.artwork-filter { border-top: 5px solid #ed2324; padding: 14px 0 8px; }
+.artwork-filter .form-label { font-size: 12px; font-weight: 700; margin-bottom: 7px; }
+.artwork-filter-controls { display: flex; gap: 7px; align-items: center; }
+.artwork-filter-controls .form-control { min-width: 0; min-height: 42px; border: 1px solid #3c3c3c73; border-radius: 8px; padding: 8px; font-size: 12px; }
+.btn { border-radius: 21px; min-height: 42px; padding: 7px 15px; font-size: 12px; font-weight: 700; }
+.btn-primary { --bs-btn-bg: #ed2324; --bs-btn-border-color: #ed2324; --bs-btn-hover-bg: #3c3c3c; --bs-btn-hover-border-color: #3c3c3c; --bs-btn-active-bg: #3c3c3c; --bs-btn-active-border-color: #3c3c3c; --bs-btn-disabled-bg: #ed2324; --bs-btn-disabled-border-color: #ed2324; }
+.btn-outline-secondary { --bs-btn-color: #3c3c3c; --bs-btn-border-color: #3c3c3c73; --bs-btn-hover-bg: #3c3c3c; --bs-btn-hover-border-color: #3c3c3c; }
+.artwork-count { font-size: 10px; color: #777; margin: 4px 0 10px; }
+.artwork-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.artwork-tile { position: relative; height: clamp(130px, calc(100dvh - 470px), 245px); overflow: hidden; border: 0; border-radius: 14px; background: #3c3c3c; color: white; transition: transform .2s, box-shadow .2s; }
+.artwork-media { width: 100%; height: 100%; object-fit: cover; }
+.artwork-tile-caption { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; background: linear-gradient(180deg, #3c3c3c1f 20%, #3c3c3cf0 100%); }
+.artwork-tile:hover { transform: translateY(-3px); box-shadow: 0 10px 22px #3c3c3c47; }
+.artwork-tile h2 { font-size: 19px; line-height: 1.05; margin-bottom: 8px; color: white; }
+.artwork-tile .card-text { display: flex; flex-wrap: wrap; gap: 4px 8px; margin: 0; font-size: 10px; font-weight: 700; color: #ffffffe0; }
+.artwork-pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; font-size: 12px; }
+.artwork-pagination .btn { min-height: 34px; border-radius: 17px; padding: 5px 13px; font-size: 11px; }
+.artwork-empty { padding: 24px 12px; font-size: 14px; }
+.artwork-navigation { flex: 0 0 72px; padding: 0; background: #3c3c3c; }
+.artwork-navigation .nav { width: 100%; display: flex; justify-content: space-around; }
+.artwork-navigation .nav-link { display: flex; align-items: center; flex-direction: column; gap: 3px; padding: 6px 3px; color: #ffffffc7; font-size: 11px; font-weight: 700; }
+.artwork-navigation .nav-link span { font-size: 22px; line-height: 1.1; }
+.artwork-navigation .nav-link.active { color: #ed2324; }
+.artwork-navigation .nav-link.disabled { color: #ffffff61; cursor: not-allowed; }
+.artwork-shell:has(.artwork-feed) .artwork-brand { position: absolute; z-index: 3; top: 8px; left: 8px; right: 8px; padding: 18px; }
+.artwork-shell:has(.artwork-feed) .artwork-brand a { color: white; }
+.artwork-shell:has(.artwork-feed) .artwork-brand > span { display: block; color: #ed2324; font-size: 11px; font-weight: 800; letter-spacing: .1em; }
+.artwork-feed { position: relative; height: calc(100% - 16px); margin: 8px; overflow: hidden; border-radius: 14px; background: #3c3c3c; color: white; }
+.artwork-shade { position: absolute; inset: 0; background: linear-gradient(180deg, #3c3c3c1f 20%, #3c3c3cf0 100%); pointer-events: none; }
+.artwork-feed-copy { position: absolute; right: 105px; bottom: 24px; left: 20px; }
+.artwork-feed-copy h1 { font-size: 34px; line-height: 1; color: white; margin: 8px 0 12px; }
+.artwork-feed-copy .artwork-eyebrow { color: #ed2324; font-size: 11px; }
+.artwork-description { margin: 0; font-size: 14px; line-height: 1.35; max-height: 30dvh; overflow: auto; }
+.artwork-description-short { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.artwork-more { min-height: 0; color: white; padding: 6px 0 0; border: 0; border-radius: 0; text-decoration: underline; font-size: 12px; }
+.artwork-more:hover { color: white; }
+.artwork-feed-actions { position: absolute; right: 12px; bottom: 22px; width: 82px; display: flex; flex-direction: column; gap: 10px; text-align: center; }
+.artwork-feed-actions div, .artwork-feed-actions button { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 58px; border: 0; border-radius: 12px; padding: 7px 4px; background: #3c3c3cd1; color: white; }
+.artwork-feed-actions span { font-size: 9px; line-height: 1.1; text-transform: uppercase; }
+.artwork-feed-actions strong { font-size: 11px; margin-top: 4px; }
+.artwork-feed-actions .artwork-action-icon { font-size: 24px; line-height: 1; }
+.artwork-feed-actions .btn-light:hover { color: white; background: #ed2324; }

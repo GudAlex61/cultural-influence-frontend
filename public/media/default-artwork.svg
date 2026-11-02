@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="960" viewBox="0 0 720 960">
+  <rect width="720" height="960" fill="#d8d5ce"/>
+  <rect x="48" y="48" width="624" height="864" rx="8" fill="none" stroke="#a7a39a" stroke-width="2"/>
+  <path d="M160 320 Q260 280 360 330 Q460 280 560 320 V610 Q460 575 360 625 Q260 575 160 610Z" fill="#f9f7f0" stroke="#3c3c3c" stroke-width="9"/>
+  <path d="M360 330V625M200 370Q270 350 320 375M200 420Q270 400 320 425M200 470Q270 450 320 475M400 375Q470 350 520 370M400 425Q470 400 520 420M400 475Q470 450 520 470" fill="none" stroke="#a7a39a" stroke-width="7"/>
+  <path d="M440 307V435L465 410L490 435V300" fill="#ed2324"/>
+  <text x="360" y="727" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" fill="#3c3c3c">КУЛЬТУРНЫЙ СЛЕД</text>
+  <text x="360" y="770" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#666">Изображение отсутствует</text>
+</svg>
