@@ -1,6 +1,6 @@
 import type { ArtworkExcerpt } from './artwork_excerpt';
 
-// В ЛР5 все карточки берутся из этой коллекции. Обращений к API нет.
+// Резервные данные ЛР6: только для гостя при недоступности API.
 // Даты и числа цитирований — учебные данные, унаследованные от ЛР2.
 export const ARTWORK_EXCERPTS_MOCK: readonly ArtworkExcerpt[] = [
   { id: 1, artworkTitle: 'Преступление и наказание',

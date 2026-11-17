@@ -56,3 +56,23 @@ h1, .artwork-tile h2 { font-family: Georgia, 'Times New Roman', serif; font-weig
 .artwork-feed-actions strong { font-size: 11px; margin-top: 4px; }
 .artwork-feed-actions .artwork-action-icon { font-size: 24px; line-height: 1; }
 .artwork-feed-actions .btn-light:hover { color: white; background: #ed2324; }
+
+/* Формы и состояния ЛР6. */
+.artwork-tile-link { display: block; width: 100%; height: 100%; color: white; }
+.artwork-delete { position: absolute; top: 8px; right: 8px; z-index: 2; min-height: 32px; padding: 4px 9px; }
+.artwork-form-page { padding: 20px 16px 28px; }
+.artwork-form-page h1 { font-size: 34px; margin-bottom: 20px; }
+.artwork-form-page .form-label { font-size: 13px; font-weight: 700; }
+.artwork-form-page .form-control { min-height: 42px; border-radius: 8px; }
+.artwork-form-page p { font-size: 14px; }
+.artwork-draft-title { font-size: 24px; margin: 12px 0; }
+.artwork-draft-media { height: 180px; margin-bottom: 16px; border-radius: 12px; overflow: hidden; }
+.artwork-draft-video { display: block; width: 100%; max-height: 180px; margin-bottom: 16px; border-radius: 12px; }
+.artwork-content:has(.artwork-feed) { display: flex; flex-direction: column; overflow: hidden; }
+.artwork-content > .artwork-feed { flex: 1; min-height: 0; }
+.artwork-demo-note { padding: 8px 16px; margin: 0; font-size: 12px; background: #f1f1f1; }
+.artwork-loading { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; background: #ffffffc7; color: #ed2324; cursor: wait; }
+.artwork-navigation button.nav-link { border: 0; background: transparent; }
+.artwork-feed-actions [aria-pressed="true"] { background: #ed2324; }
+.artwork-feed-actions .btn-primary { background: #ed2324; }
+.artwork-content > .alert { margin: 8px; font-size: 13px; }

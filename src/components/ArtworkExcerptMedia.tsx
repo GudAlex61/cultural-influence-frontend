@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { artworkMediaUrl } from '../api/artwork-media-url';
 
 export const DEFAULT_ARTWORK_IMAGE = '/media/default-artwork.svg';
 export const DEFAULT_ARTWORK_VIDEO = '/media/default-artwork.webm';
@@ -13,8 +14,8 @@ interface ArtworkExcerptMediaProps {
 export function ArtworkExcerptMedia({ imageUrl, videoUrl, artworkTitle, playVideo = false }: ArtworkExcerptMediaProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
-  const image = imageFailed || !imageUrl?.trim() ? DEFAULT_ARTWORK_IMAGE : imageUrl;
-  const video = videoFailed || !videoUrl?.trim() ? DEFAULT_ARTWORK_VIDEO : videoUrl;
+  const image = imageFailed || !imageUrl?.trim() ? DEFAULT_ARTWORK_IMAGE : artworkMediaUrl(imageUrl);
+  const video = videoFailed || !videoUrl?.trim() ? DEFAULT_ARTWORK_VIDEO : artworkMediaUrl(videoUrl);
 
   return playVideo ? (
     <video className="artwork-media" src={video} poster={image}

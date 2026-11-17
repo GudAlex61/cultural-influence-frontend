@@ -1,0 +1,573 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/artwork_excerpts": {
+      "get": {
+        "operationId": "ArtworkExcerptsController_getPublished",
+        "summary": "Плитка опубликованных отрывков с фильтром по дате создания произведения",
+        "parameters": [
+          {
+            "name": "artworkCreationDate",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArtworkExcerptResponseDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ]
+      },
+      "post": {
+        "operationId": "ArtworkExcerptsController_createDraft",
+        "summary": "Создать черновик с фото и видео в MinIO",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "artworkTitle",
+                  "image",
+                  "video"
+                ],
+                "properties": {
+                  "artworkTitle": {
+                    "type": "string",
+                    "example": "Цитата из романа"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "video": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtworkExcerptResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ],
+        "security": [
+          {
+            "sessionId": []
+          }
+        ]
+      }
+    },
+    "/api/artwork_excerpts/draft": {
+      "get": {
+        "operationId": "ArtworkExcerptsController_getDraft",
+        "summary": "Черновик вошедшего пользователя",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtworkExcerptResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ],
+        "security": [
+          {
+            "sessionId": []
+          }
+        ]
+      }
+    },
+    "/api/artwork_excerpts/feed": {
+      "get": {
+        "operationId": "ArtworkExcerptsController_getFirstFeed",
+        "summary": "Первый опубликованный отрывок ленты",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtworkExcerptResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ]
+      }
+    },
+    "/api/artwork_excerpts/feed/{id}": {
+      "get": {
+        "operationId": "ArtworkExcerptsController_getFeed",
+        "summary": "Отрывок ленты по ID или следующий опубликованный",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "next",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtworkExcerptResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ]
+      }
+    },
+    "/api/artwork_excerpts/{id}/publication": {
+      "put": {
+        "operationId": "ArtworkExcerptsController_publish",
+        "summary": "Опубликовать свой черновик",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishArtworkExcerptDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtworkExcerptResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ],
+        "security": [
+          {
+            "sessionId": []
+          }
+        ]
+      }
+    },
+    "/api/artwork_excerpts/{id}/likes": {
+      "post": {
+        "operationId": "ArtworkExcerptsController_setLike",
+        "summary": "Поставить или отменить лайк",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetArtworkExcerptLikeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArtworkExcerptResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ],
+        "security": [
+          {
+            "sessionId": []
+          }
+        ]
+      }
+    },
+    "/api/artwork_excerpts/{id}": {
+      "delete": {
+        "operationId": "ArtworkExcerptsController_delete",
+        "summary": "Логически удалить свой опубликованный отрывок",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Отрывки произведений искусства"
+        ],
+        "security": [
+          {
+            "sessionId": []
+          }
+        ]
+      }
+    },
+    "/api/users": {
+      "post": {
+        "operationId": "UsersController_register",
+        "summary": "Регистрация создателя отрывков",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Пользователи"
+        ]
+      }
+    },
+    "/api/sessions": {
+      "post": {
+        "operationId": "SessionsController_authenticate",
+        "summary": "Вход пользователя и создание Redis-сессии",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Сеансы пользователей"
+        ]
+      }
+    },
+    "/api/sessions/logout": {
+      "post": {
+        "operationId": "SessionsController_logout",
+        "summary": "Удаление Redis-сессии и cookie",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Сеансы пользователей"
+        ],
+        "security": [
+          {
+            "sessionId": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Культурный след — API",
+    "description": "ЛР-4: отрывки произведений искусства, пользователи и сессии",
+    "version": "4.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "sessionId": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sessionId"
+      }
+    },
+    "schemas": {
+      "ArtworkExcerptResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "artworkTitle": {
+            "type": "string"
+          },
+          "shortDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "videoUrl": {
+            "type": "string"
+          },
+          "artworkCreationDate": {
+            "type": "string",
+            "nullable": true,
+            "format": "date"
+          },
+          "citationCount": {
+            "type": "number",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "formationDate": {
+            "type": "string",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "likeCount": {
+            "type": "number"
+          },
+          "isOwner": {
+            "type": "number",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "isLiked": {
+            "type": "number",
+            "enum": [
+              0,
+              1
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "artworkTitle",
+          "shortDescription",
+          "imageUrl",
+          "videoUrl",
+          "artworkCreationDate",
+          "citationCount",
+          "createdAt",
+          "formationDate",
+          "likeCount",
+          "isOwner",
+          "isLiked"
+        ]
+      },
+      "PublishArtworkExcerptDto": {
+        "type": "object",
+        "properties": {
+          "shortDescription": {
+            "type": "string",
+            "example": "Краткое описание отрывка"
+          },
+          "artworkCreationDate": {
+            "type": "string",
+            "example": "1866-01-01",
+            "format": "date"
+          },
+          "citationCount": {
+            "type": "number",
+            "example": 12,
+            "minimum": 0
+          }
+        },
+        "required": [
+          "shortDescription",
+          "artworkCreationDate",
+          "citationCount"
+        ]
+      },
+      "SetArtworkExcerptLikeDto": {
+        "type": "object",
+        "properties": {
+          "liked": {
+            "type": "number",
+            "enum": [
+              0,
+              1
+            ],
+            "example": 1
+          }
+        },
+        "required": [
+          "liked"
+        ]
+      },
+      "RegisterUserDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "art_reader"
+          },
+          "displayName": {
+            "type": "string",
+            "example": "Читатель искусства"
+          },
+          "password": {
+            "type": "string",
+            "example": "StrongPassword123!"
+          }
+        },
+        "required": [
+          "username",
+          "displayName",
+          "password"
+        ]
+      },
+      "UserResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "username": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "displayName"
+        ]
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "art_reader"
+          },
+          "password": {
+            "type": "string",
+            "example": "StrongPassword123!"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      }
+    }
+  }
+}

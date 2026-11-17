@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="26.0.0">
+  <diagram id="artwork-usecases" name="Прецеденты ЛР6">
+    <mxGraphModel dx="794" dy="1123" grid="0" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="794" pageHeight="1123" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="React приложение «Культурный след»" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;verticalAlign=top;spacingTop=14;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="205" y="35" width="550" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="guest" value="Гость" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="90" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="user" value="Авторизованный&lt;br&gt;пользователь" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="680" width="90" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tiles" value="Просмотреть плитку" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="100" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="filter" value="Найти по дате&lt;br&gt;создания произведения" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="180" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="feed" value="Просмотреть отрывок&lt;br&gt;и перейти к следующему" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="260" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="register" value="Зарегистрироваться" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="340" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="login" value="Войти" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="420" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="draft" value="Создать черновик&lt;br&gt;с фото и видео" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="550" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="publish" value="Опубликовать отрывок" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="640" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="like" value="Поставить или снять лайк" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="730" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="delete" value="Удалить свой отрывок" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="820" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="logout" value="Выйти" style="html=1;whiteSpace=wrap;fontFamily=Arial;fontSize=20;fontColor=#000000;strokeColor=#000000;fillColor=#ffffff;ellipse;" vertex="1" parent="1">
+          <mxGeometry x="335" y="910" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-tiles" source="guest" target="tiles" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-filter" source="guest" target="filter" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-feed" source="guest" target="feed" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-register" source="guest" target="register" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-login" source="guest" target="login" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-draft" source="user" target="draft" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-publish" source="user" target="publish" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-like" source="user" target="like" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-delete" source="user" target="delete" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc-logout" source="user" target="logout" style="endArrow=none;startArrow=none;html=1;strokeColor=#000000;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="generalization" source="user" target="guest" style="endArrow=block;endFill=0;endSize=18;strokeColor=#000000;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

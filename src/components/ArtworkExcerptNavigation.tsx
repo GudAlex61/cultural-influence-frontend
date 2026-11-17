@@ -1,19 +1,28 @@
 import { Nav, Navbar } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useArtworkDispatch, useArtworkSelector } from '../store/hooks';
+import { logoutArtworkUser } from '../api/artwork-auth';
 
-export function ArtworkExcerptNavigation({ firstArtworkId }: { firstArtworkId?: number }) {
+export function ArtworkExcerptNavigation() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useArtworkDispatch();
+  const user = useArtworkSelector((s) => s.auth.user);
+  const busy = useArtworkSelector((s) => s.auth.loading || s.artworkExcerpts.pending > 0);
   return (
     <Navbar className="artwork-navigation" aria-label="Основная навигация">
       <Nav>
-        {firstArtworkId ? (
-          <Nav.Link as={Link} to={`/artwork_excerpts/feed/${firstArtworkId}`}
-            active={pathname.includes('/feed/')}><span aria-hidden="true">▶︎</span>Лента</Nav.Link>
-        ) : <Nav.Link disabled><span aria-hidden="true">▶︎</span>Лента</Nav.Link>}
-        <Nav.Link disabled title="Добавление будет доступно в ЛР6"><span aria-hidden="true">＋</span>Добавление</Nav.Link>
-        <Nav.Link as={Link} to="/artwork_excerpts" active={pathname === '/artwork_excerpts'}>
+        <Nav.Link as={Link} to="/artwork_excerpts/feed" disabled={busy}
+          active={pathname.includes('/feed')}><span aria-hidden="true">▶︎</span>Лента</Nav.Link>
+        <Nav.Link as={Link} to="/artwork_excerpts/draft" disabled={!user || busy}
+          active={pathname.includes('/draft')}><span aria-hidden="true">＋</span>Добавление</Nav.Link>
+        <Nav.Link as={Link} to="/artwork_excerpts" disabled={busy} active={pathname === '/artwork_excerpts'}>
           <span aria-hidden="true">▦</span>Плитка</Nav.Link>
-        <Nav.Link disabled title="Вход будет доступен в ЛР6"><span aria-hidden="true">♙</span>Вход</Nav.Link>
+        {user ? <Nav.Link as="button" disabled={busy} onClick={async () => {
+          if (await logoutArtworkUser(dispatch)) navigate('/artwork_excerpts');
+        }}><span aria-hidden="true">♙</span>Выход</Nav.Link> :
+          <Nav.Link as={Link} to="/users/login" disabled={busy} active={pathname === '/users/login'}>
+            <span aria-hidden="true">♙</span>Вход</Nav.Link>}
       </Nav>
     </Navbar>
   );
